@@ -1,0 +1,19 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-title color="light">
+      Cancer eBook
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div *ngFor="let item of Items" (click)="getEbookTerm(item.id, item.name, item.type)">
+    <ion-item lines="none" detail style="height: 100px;">
+      <img src="{{item.image}}" slot="start" style="height: 70px; width: 70px; padding: 10px;">
+
+      <ion-label>{{item.name}}</ion-label>
+    </ion-item>
+  </div>
+
+</ion-content>

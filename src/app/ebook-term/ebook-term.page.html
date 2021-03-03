@@ -1,0 +1,102 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light"> </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      {{Term}}
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="showData == false">
+      <ion-button fill="clear" (click)="Reset()">
+        <ion-label color="light">
+          Done
+        </ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-toolbar>
+
+  <div class="div_searchbar" *ngIf="type == 'CTCAE'">
+    <ion-searchbar mode="ios" placeholder="Search" class="search_bar" (ionChange)="onSearchChange($event)"
+      (ionFocus)="checkFocus()" style="margin-top: 15px;">
+    </ion-searchbar>
+  </div>
+  <div class="div_searchbar" *ngIf="type == 'Drug'">
+    <ion-searchbar mode="ios" placeholder="Search" class="search_bar" (ionChange)="onSearchChangeDrug($event)"
+      style="margin-top: 15px;">
+    </ion-searchbar>
+  </div>
+  <div class="div_searchbar" *ngIf="type == 'form'">
+    <ion-searchbar mode="ios" placeholder="Search" class="search_bar" (ionChange)="onSearchChangeForm($event)"
+      style="margin-top: 15px;">
+    </ion-searchbar>
+  </div>
+</ion-toolbar>
+<ion-content>
+
+  <ion-grid *ngIf="type == 'CTCAE'">
+    <ion-row>
+      <ion-col size="11">
+        <div>
+          <div *ngIf="showData === true">
+
+
+            <div *ngFor="let item of allData; let i = index">
+              <div *ngIf="item?.terms != null">
+                <ion-item-divider id='{{allData[i].header}}' class="div-defination_Ctcae">
+                  <ion-label> {{allData[i].header}}</ion-label>
+                </ion-item-divider>
+                <div *ngFor="let p of item?.terms">
+                  <ion-item (click)="getEbookTermDescription(p.id, p.term)">
+                    <ion-label> {{p.term}} </ion-label>
+                  </ion-item>
+                </div>
+
+
+              </div>
+
+            </div>
+          </div>
+          <div *ngIf="showData === false">
+            <div *ngFor="let p of Newdata">
+              <ion-item (click)="getEbookTermDescription(p.id, p.term)">
+                <ion-label> {{p.term}} </ion-label>
+              </ion-item>
+            </div>
+          </div>
+        </div>
+
+
+      </ion-col>
+      <ion-col size="1" class="fix" *ngIf="showData == true">
+
+        <div *ngFor="let data of allData; let i = index" (click)="PositonItem(allData[i].header)">
+          <ion-label *ngIf="data?.terms != null"> {{allData[i].header}}</ion-label>
+        </div>
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="type == 'Drug'">
+    <div *ngFor="let item of AllDrugs; let i = index">
+      <ion-item (click)="getEbookTermDescription(item.id, item.term)" detail>
+        <ion-label> {{item.term}} </ion-label>
+      </ion-item>
+
+    </div>
+  </div>
+
+  <div *ngIf="type == 'form' ">
+    <div *ngFor="let item of Form; let i = index">
+      <ion-item (click)="getEbookTermDescription(item.id, item.name)" detail>
+        <ion-label> {{item.name}} </ion-label>
+      </ion-item>
+
+    </div>
+  </div>
+
+</ion-content>

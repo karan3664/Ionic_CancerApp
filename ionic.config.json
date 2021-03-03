@@ -1,0 +1,7 @@
+{
+  "name": "Cancer-Ebook",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

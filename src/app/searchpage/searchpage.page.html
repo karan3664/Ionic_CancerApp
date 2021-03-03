@@ -1,0 +1,21 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light"> </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Search
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<div class="div_searchbar">
+  <ion-searchbar mode="ios" placeholder="Search" (ionChange)="onSearchChange($event)" class="search_bar"
+    style="margin-top: 15px;"></ion-searchbar>
+</div>
+<ion-content>
+  <div *ngFor="let item of allData; let i = index">
+    <ion-item  (click)="getEbookTermDescription(item.id, item.term)">
+      <ion-label> {{item.term}} </ion-label>
+    </ion-item>
+  </div>
+</ion-content>

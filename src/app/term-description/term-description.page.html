@@ -1,0 +1,92 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light"> </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      {{Term}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div *ngIf="type == 'CTCAE'">
+    <div>
+      <div class="div-defination ">Defination</div>
+      <div style="padding: 10px;" [innerHTML]="Defination">
+      </div>
+    </div>
+    <div *ngIf="grade1 != ''">
+      <div class="div-defination ">Grade 1</div>
+      <div style="padding: 10px;" [innerHTML]="grade1">
+
+      </div>
+    </div>
+    <div *ngIf="grade2 != ''">
+      <div class="div-defination ">Grade 2</div>
+      <div style="padding: 10px;" [innerHTML]="grade2">
+      </div>
+    </div>
+    <div *ngIf="grade3 != ''">
+      <div class="div-defination ">Grade 3</div>
+      <div style="padding: 10px;" [innerHTML]="grade3">
+
+      </div>
+    </div>
+    <div *ngIf="grade4 != ''">
+      <div class="div-defination ">Grade 4</div>
+      <div style="padding: 10px;" [innerHTML]="grade4">
+
+      </div>
+    </div>
+    <div *ngIf="grade5 != ''">
+      <div class="div-defination ">Grade 5</div>
+      <div style="padding: 10px;" [innerHTML]="grade5">
+
+      </div>
+    </div>
+
+    <div>
+      <div class="div-defination ">Navigational Note</div>
+      <div style="padding: 10px;" [innerHTML]="navigational_note">
+
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="type == 'Drug' ">
+    <div>
+      <div [innerHTML]="Drugdescription">
+
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="type == 'form' ">
+    <div>
+      <div class="div-defination ">Disease Site And Stage</div>
+      <div style="padding: 10px;" [innerHTML]="disease_site_and_stage">
+      </div>
+    </div>
+    <div>
+      <div class="div-defination ">Trial Heading</div>
+      <div style="padding: 10px;" [innerHTML]="trial_heading">
+
+      </div>
+    </div>
+    <div>
+      <div class="div-defination ">Criterion</div>
+      <div style="padding: 10px;" [innerHTML]="criterion">
+      </div>
+    </div>
+    <div>
+      <div class="div-defination ">Study Contact</div>
+      <div style="padding: 10px;" [innerHTML]="study_contact">
+
+      </div>
+    </div>
+
+
+  </div>
+</ion-content>
